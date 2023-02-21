@@ -12,19 +12,16 @@ class NegociacaoController{
         event.preventDefault();
         
         /// converte o this._inputData de string para um objeto Date
-        let data = new Date(...this._inputData
-            .value
-            .split("-")
-            .map((item, indice) => item - indice % 2)
-        );
-
         let negociacao = new Negociacao(
-            data,
+            DateHelper.textoParaData(this._inputData.value),
             this._inputQuantidade.value,
             this._inputValor.value
         )
+        /// converte o Date para string
+        let diasMesAno = DateHelper.dataParaTexto(negociacao.data);
 
         console.log(negociacao)
+        console.log(diasMesAno)
 
     }
 }
